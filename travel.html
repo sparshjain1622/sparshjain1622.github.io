@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Travel · SJ</title>
+<meta name="description" content="Where Sparsh Jain (SJ) has travelled and trekked: Uttarakhand, Himachal, Delhi, South India, Pune, the Sahyadri ranges and Darjeeling; peaks like Kedarkantha, Kalsubai and AMK; and adventures from river rafting to bungee jumping.">
+<meta name="theme-color" content="#070a14">
+<link rel="icon" href="mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .stamps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .stamp { position: relative; aspect-ratio: 1; display: grid; place-content: center; text-align: center; padding: 22px; border-radius: 50%; border: 3px dashed currentColor; color: var(--gold); transform: rotate(var(--r, -6deg)); }
+  .stamp::before { content: ""; position: absolute; inset: 10px; border-radius: 50%; border: 2px solid currentColor; opacity: .5; }
+  .stamp b { font: 800 clamp(1.3rem, 1rem + 1vw, 1.9rem)/1.05 var(--display); color: var(--star); }
+  .stamp span { font-size: 14px; color: var(--smoke); margin-top: 6px; }
+  .stamp.home { color: var(--ember); }
+  .stamp:nth-child(3n+2) { color: #9ec5ff; }
+  .skyline-wrap { position: relative; margin-top: 10px; }
+  .skyline { width: 100%; height: auto; display: block; overflow: visible; }
+  .peak-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 34px; }
+  .peak { background: var(--navy); border-radius: 22px; padding: 24px; border-top: 4px solid var(--ember); }
+  .peak b { display: block; font: 800 24px/1.1 var(--display); }
+  .peak .alt { font: 800 clamp(1.8rem, 1.2rem + 1.6vw, 2.6rem)/1 var(--display); color: var(--gold); margin: 10px 0 6px; font-variant-numeric: tabular-nums; }
+  .peak span { color: var(--smoke); font-size: 15px; }
+  .adv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; perspective: 1200px; }
+  .adv { background: var(--navy); border-radius: 26px; padding: 26px; min-height: 260px; display: flex; flex-direction: column; transform-style: preserve-3d; }
+  .adv svg { width: 84px; height: 84px; margin-bottom: auto; transform: translateZ(30px); }
+  .adv b { font: 800 28px/1.05 var(--display); margin: 22px 0 8px; transform: translateZ(20px); }
+  .adv span { color: var(--smoke); }
+  .next-band { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .ticket { background: var(--star); color: var(--night); border-radius: 22px; display: grid; grid-template-columns: 1fr 110px; overflow: hidden; }
+  .ticket .m { padding: 26px; }
+  .ticket .m small { font-weight: 700; color: #6b5a4a; }
+  .ticket .m b { display: block; font: 800 30px/1.05 var(--display); margin: 8px 0; }
+  .ticket .s { background: var(--ember); border-left: 4px dashed var(--star); display: grid; place-content: center; text-align: center; font: 800 22px/1.1 var(--display); padding: 10px; }
+  .insta { background: var(--ember); color: var(--night); border-radius: 30px; padding: clamp(40px, 6vw, 80px); display: flex; justify-content: space-between; align-items: center; gap: 30px; flex-wrap: wrap; }
+  .insta h2 { font-size: clamp(2rem, 1.2rem + 3vw, 4rem); margin: 0; max-width: 16ch; }
+  .insta .btn { background: var(--night); color: var(--star); }
+  @media (max-width: 900px) {
+    .stamps { grid-template-columns: repeat(2, 1fr); }
+    .peak-list, .adv-grid, .next-band { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body class="page">
+<header class="bar">
+  <a href="./?enter" class="logo" aria-label="SJ home"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#sj-mark"/></svg><span>SJ</span></a>
+  <nav aria-label="Main"><a href="./?enter">Home</a><a href="tech.html">Tech</a><a href="travel.html" aria-current="page">Travel</a><a href="ai-agent-books/">Books</a></nav>
+  <a class="btn ember" href="https://www.instagram.com/travel.with.sparsh/" style="min-height:42px" rel="me noopener">Instagram</a>
+</header>
+
+<main>
+<section class="page-hero">
+  <div>
+    <h1 class="wipe">Out there</h1>
+    <p class="rise">States, peaks, rivers and the adventures in between. Every trip started with a yes.</p>
+    <a class="btn ember rise" href="#places">See where I have been</a>
+  </div>
+  <div class="avatar-stage"><canvas id="sjTravel" role="img" aria-label="SJ's 3D avatar in sunglasses sitting on a rock with a backpack, waving"></canvas></div>
+</section>
+
+<section class="sec" id="places">
+  <h2 class="wipe">Stamps in the passport</h2>
+  <div class="stamps">
+    <div class="stamp home" style="--r:-8deg"><b>Indore</b><span>Home base</span></div>
+    <div class="stamp" style="--r:5deg"><b>Uttarakhand</b><span>Snow trails</span></div>
+    <div class="stamp" style="--r:-4deg"><b>Himachal</b><span>Valleys and passes</span></div>
+    <div class="stamp" style="--r:7deg"><b>Darjeeling</b><span>Tea hills</span></div>
+    <div class="stamp" style="--r:-6deg"><b>Delhi</b><span>The big city</span></div>
+    <div class="stamp" style="--r:4deg"><b>South India</b><span>Coast and hills</span></div>
+    <div class="stamp" style="--r:-3deg"><b>Pune</b><span>Gateway to the forts</span></div>
+    <div class="stamp" style="--r:6deg"><b>Sahyadris</b><span>Every range of Maharashtra</span></div>
+  </div>
+</section>
+
+<section class="sec" id="peaks">
+  <h2 class="wipe">Peaks I have stood on</h2>
+  <div class="skyline-wrap">
+    <svg class="skyline" viewBox="0 0 1000 340" aria-hidden="true">
+      <path class="ridge" d="M0 330 L120 330 L230 40 L340 330 L400 330 L470 214 L540 330 L590 330 L650 222 L700 250 L760 210 L830 330 L870 330 L920 236 L1000 330" fill="none" stroke="#f3b562" stroke-width="3" stroke-linejoin="round"/>
+      <path class="ridge-fill" d="M0 330 L120 330 L230 40 L340 330 L400 330 L470 214 L540 330 L590 330 L650 222 L700 250 L760 210 L830 330 L870 330 L920 236 L1000 330 Z" fill="#16203d" opacity="0"/>
+      <g class="flags" font-family="Manrope, sans-serif" font-weight="700" font-size="16" fill="#ece6d6">
+        <g><path d="M230 40 V0 L254 10 L230 20" fill="#ff7a2f"/><text x="250" y="60">Kedarkantha</text></g>
+        <g><path d="M470 214 V176 L494 186 L470 196" fill="#ff7a2f"/><text x="488" y="232">Kalsubai</text></g>
+        <g><path d="M760 210 V172 L784 182 L760 192" fill="#ff7a2f"/><text x="660" y="196">Alang · Madan · Kulang</text></g>
+        <g><path d="M920 236 V198 L944 208 L920 218" fill="#ff7a2f"/><text x="900" y="256">Ratangad</text></g>
+      </g>
+      <path d="M0 330 H1000" stroke="#22305a" stroke-width="2"/>
+    </svg>
+  </div>
+  <div class="peak-list">
+    <div class="peak rise"><b>Kedarkantha</b><div class="alt">3,800 m</div><span>Uttarakhand. A winter summit above the clouds and the highest point so far.</span></div>
+    <div class="peak rise"><b>Kalsubai</b><div class="alt">1,646 m</div><span>The highest peak in Maharashtra, iron ladders and all.</span></div>
+    <div class="peak rise"><b>Alang · Madan · Kulang</b><div class="alt">AMK</div><span>The toughest trek in the Sahyadris: rock patches, rappels and a night climb.</span></div>
+    <div class="peak rise"><b>And more</b><div class="alt">Forts</div><span>Ratangad at sunrise, Matheran, Nanemachi in the mist, and many Sahyadri ridges.</span></div>
+  </div>
+</section>
+
+<section class="sec" id="adventures">
+  <h2 class="wipe">Things I have jumped off, into and over</h2>
+  <div class="adv-grid">
+    <article class="adv tilt rise"><svg viewBox="0 0 84 84" aria-hidden="true"><path d="M6 60 C20 50 30 70 44 60 S68 50 78 60" stroke="#9ec5ff" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M14 46 L70 38 L64 50 L20 54Z" fill="#ff7a2f"/><path d="M42 22 L42 42 M30 32 L54 32" stroke="#ece6d6" stroke-width="4" stroke-linecap="round"/></svg><b>River rafting</b><span>White water, cold splashes and a paddle team shouting in rhythm.</span></article>
+    <article class="adv tilt rise"><svg viewBox="0 0 84 84" aria-hidden="true"><path d="M10 10 H74" stroke="#ece6d6" stroke-width="5" stroke-linecap="round"/><path d="M42 10 C42 30 50 34 42 50" stroke="#f3b562" stroke-width="3" fill="none" stroke-dasharray="4 4"/><circle cx="42" cy="58" r="7" fill="#ff7a2f"/><path d="M42 65 L42 76 M34 70 L50 70" stroke="#ff7a2f" stroke-width="4" stroke-linecap="round"/></svg><b>Bungee jumping</b><span>One step off a platform. The longest three seconds of my life.</span></article>
+    <article class="adv tilt rise"><svg viewBox="0 0 84 84" aria-hidden="true"><path d="M6 26 H34 V80 H6Z" fill="#22305a"/><path d="M40 22 C52 26 56 40 58 56" stroke="#f3b562" stroke-width="3" fill="none" stroke-dasharray="4 4"/><circle cx="60" cy="62" r="6" fill="#ff7a2f"/><path d="M40 78 C50 72 64 72 78 78" stroke="#9ec5ff" stroke-width="5" fill="none" stroke-linecap="round"/></svg><b>Cliff jumping</b><span>Feet first into deep water. Count to three, then just go.</span></article>
+    <article class="adv tilt rise"><svg viewBox="0 0 84 84" aria-hidden="true"><path d="M10 30 C20 10 64 10 74 30 C60 24 24 24 10 30Z" fill="#ff7a2f"/><path d="M14 29 L40 58 M70 29 L44 58" stroke="#ece6d6" stroke-width="2"/><circle cx="42" cy="62" r="6" fill="#f3b562"/><path d="M8 78 L30 68 L50 74 L76 64" stroke="#22305a" stroke-width="4" fill="none"/></svg><b>Paragliding</b><span>Running off a hill and letting the thermals decide the route.</span></article>
+    <article class="adv tilt rise"><svg viewBox="0 0 84 84" aria-hidden="true"><path d="M14 22 C24 8 52 8 62 22 C50 18 26 18 14 22Z" fill="#f3b562"/><path d="M18 21 L36 46 M58 21 L40 46" stroke="#ece6d6" stroke-width="2"/><circle cx="38" cy="50" r="5" fill="#ff7a2f"/><path d="M38 55 L66 72" stroke="#ece6d6" stroke-width="2" stroke-dasharray="3 3"/><path d="M60 72 H80 L76 78 H62Z" fill="#9ec5ff"/></svg><b>Parasailing</b><span>Towed behind a boat, floating over the sea with the whole coast below.</span></article>
+    <article class="adv tilt rise"><svg viewBox="0 0 84 84" aria-hidden="true"><path d="M50 4 V80" stroke="#9ec5ff" stroke-width="10" opacity=".5"/><path d="M30 4 V54" stroke="#ece6d6" stroke-width="2"/><circle cx="30" cy="60" r="6" fill="#ff7a2f"/><path d="M24 66 L30 62 L36 66" stroke="#ff7a2f" stroke-width="3" fill="none"/><path d="M4 80 H80" stroke="#22305a" stroke-width="4"/></svg><b>Rappelling</b><span>Down a monsoon waterfall on a rope. Then straight back for another go.</span></article>
+  </div>
+</section>
+
+<section class="sec" id="next">
+  <h2 class="wipe">Boarding next</h2>
+  <div class="next-band">
+    <div class="ticket rise"><div class="m"><small>Indore to Spiti</small><b>Ice climbing</b><span>Frozen waterfalls in the Himalayan winter.</span></div><div class="s">Next winter</div></div>
+    <div class="ticket rise"><div class="m"><small>Indore to Dubai</small><b>Skydive</b><span>Four thousand metres, one door, one yes.</span></div><div class="s">Soon</div></div>
+    <div class="ticket rise"><div class="m"><small>India to Bali</small><b>Bali</b><span>Volcano sunrises, waves and rice terraces.</span></div><div class="s">2027</div></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="insta rise">
+    <h2>The full stories live on Instagram</h2>
+    <a class="btn" href="https://www.instagram.com/travel.with.sparsh/" rel="me noopener">Follow travel.with.sparsh</a>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="foot-links"><a href="./?enter">Home</a><a href="tech.html">Tech</a><a href="ai-agent-books/">Books</a><a href="https://www.instagram.com/travel.with.sparsh/" rel="me noopener">Instagram</a><a href="mailto:jsparsh11@gmail.com">jsparsh11@gmail.com</a></div>
+  <div class="foot-name" aria-hidden="true">SJ</div>
+  <p class="foot-note">© 2026 Sparsh Jain · Written somewhere with no signal</p>
+</footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="sj-mark" viewBox="0 0 64 64"><path d="M32 6 C40 18 48 24 48 38 C48 48 41 56 32 56 C23 56 16 48 16 38 C16 30 21 26 24 20 C26 28 30 30 32 30 C30 22 28 14 32 6Z" fill="currentColor"/><path d="M10 58 L54 50 M10 50 L54 58" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
+</svg>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script type="module">
+  import { mountAvatar } from "./avatar-stage.js";
+  import { initMotion } from "./motion.js";
+  mountAvatar(document.getElementById("sjTravel"), { day: 1, prop: "rock", waveEvery: 6 });
+  initMotion();
+  if (window.gsap && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    // the skyline draws itself, then fills, then each summit flag pops up
+    const ridge = document.querySelector(".ridge"), L = ridge.getTotalLength();
+    gsap.set(ridge, { strokeDasharray: L, strokeDashoffset: L });
+    const tl = gsap.timeline({ scrollTrigger: { trigger: "#peaks", start: "top 70%", once: true } });
+    tl.to(ridge, { strokeDashoffset: 0, duration: 2, ease: "power2.inOut" })
+      .to(".ridge-fill", { opacity: 1, duration: 0.8 }, "-=0.6")
+      .from(".flags > g", { y: 30, opacity: 0, stagger: 0.15, duration: 0.6, ease: "back.out(2)" }, "-=0.4");
+    // stamps land with a thump
+    gsap.utils.toArray(".stamp").forEach((s, i) => gsap.fromTo(s, { scale: 1.6, opacity: 0, rotation: parseFloat(s.style.getPropertyValue("--r")) }, { scale: 1, opacity: 1, rotation: parseFloat(s.style.getPropertyValue("--r")), duration: 0.45, ease: "power4.in", delay: (i % 4) * 0.08, scrollTrigger: { trigger: s, start: "top 88%", once: true } }));
+  }
+</script>
+</body>
+</html>

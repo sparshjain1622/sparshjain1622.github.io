@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tech · SJ</title>
+<meta name="description" content="The products, digital helpers and experiments Sparsh Jain (SJ) has built: a travel platform, AI agents for leads, search, sales, video and social media, a home voice assistant, robotics and two free books.">
+<meta name="theme-color" content="#070a14">
+<link rel="icon" href="mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .ring-wrap { height: 520vh; position: relative; }
+  .ring-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; display: grid; grid-template-columns: minmax(280px, 0.8fr) 1.4fr; align-items: center; padding: 80px var(--margin) 40px; gap: 20px; }
+  .ring-copy h2 { font-size: var(--step-head); margin-bottom: 18px; }
+  .ring-copy p { color: var(--smoke); }
+  .ring-count { font: 800 clamp(3rem, 2rem + 4vw, 6rem)/1 var(--display); color: var(--ember); margin-top: 30px; font-variant-numeric: tabular-nums; }
+  .ring-count small { font-size: 0.35em; color: var(--smoke); margin-left: 8px; }
+  .scene3d { height: min(76vh, 640px); perspective: 1600px; display: grid; place-items: center; overflow: hidden; border-radius: 30px; }
+  .ring { position: relative; width: 300px; height: 420px; transform-style: preserve-3d; will-change: transform; }
+  .proj { position: absolute; inset: 0; background: var(--navy); border-radius: 26px; padding: 26px; display: flex; flex-direction: column; backface-visibility: hidden; transition: opacity 400ms ease; }
+  .proj .art { border-radius: 16px; background: var(--dusk); padding: 18px; margin-bottom: 18px; }
+  .proj .art svg { width: 100%; height: auto; display: block; }
+  .proj h3 { font-size: 26px; line-height: 1.05; margin-bottom: 10px; color: var(--c, var(--star)); }
+  .proj p { font-size: 15px; margin: 0 0 12px; }
+  .proj .stack { margin-top: auto; display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; }
+  .proj .stack li { font-size: 12.5px; font-weight: 700; background: rgba(236, 230, 214, 0.08); padding: 5px 9px; border-radius: 999px; }
+  .proj .tag { position: absolute; top: 18px; right: 18px; background: var(--ember); color: var(--night); font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+  .proj.dim { opacity: 0.18; }
+  .toolbox { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .tool { background: var(--navy); border-radius: 22px; padding: 24px; min-height: 170px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .tool b { font: 800 22px/1.1 var(--display); color: var(--gold); margin-bottom: 8px; }
+  .tool span { color: var(--smoke); font-size: 15px; }
+  .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; counter-reset: f; position: relative; }
+  .flow li { list-style: none; padding: 26px 18px; background: var(--navy); border-right: 2px solid var(--night); }
+  .flow li:first-child { border-radius: 22px 0 0 22px; } .flow li:last-child { border-radius: 0 22px 22px 0; border-right: 0; }
+  .flow b { display: block; font: 800 20px/1.1 var(--display); margin-bottom: 8px; color: var(--ember); }
+  .flow span { color: var(--smoke); font-size: 15px; }
+  .cta-band { background: var(--ember); color: var(--night); border-radius: 30px; padding: clamp(40px, 6vw, 80px); display: flex; justify-content: space-between; align-items: center; gap: 30px; flex-wrap: wrap; }
+  .cta-band h2 { font-size: clamp(2rem, 1.2rem + 3vw, 4rem); margin: 0; max-width: 16ch; }
+  .cta-band .btn { background: var(--night); color: var(--star); }
+  @media (max-width: 900px) {
+    .ring-wrap { height: auto; }
+    .ring-stage { position: static; height: auto; grid-template-columns: 1fr; }
+    .scene3d { height: auto; perspective: none; }
+    .ring { width: 100%; height: auto; transform: none !important; display: grid; gap: 14px; }
+    .proj { position: relative; transform: none !important; opacity: 1 !important; }
+    .ring-count { display: none; }
+    .toolbox { grid-template-columns: 1fr 1fr; }
+    .flow { grid-template-columns: 1fr; }
+    .flow li, .flow li:first-child, .flow li:last-child { border-radius: 18px; border-right: 0; margin-bottom: 8px; }
+  }
+</style>
+</head>
+<body class="page">
+<header class="bar">
+  <a href="./?enter" class="logo" aria-label="SJ home"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#sj-mark"/></svg><span>SJ</span></a>
+  <nav aria-label="Main"><a href="./?enter">Home</a><a href="tech.html" aria-current="page">Tech</a><a href="travel.html">Travel</a><a href="ai-agent-books/">Books</a></nav>
+  <a class="btn ember" href="./?enter#hello" style="min-height:42px">Say hello</a>
+</header>
+
+<main>
+<section class="page-hero">
+  <div>
+    <h1 class="wipe">The workshop</h1>
+    <p class="rise">Products, digital helpers and late-night experiments. Built because a problem would not leave me alone.</p>
+    <a class="btn ember rise" href="#projects">See what I build</a>
+  </div>
+  <div class="avatar-stage"><canvas id="sjCode" role="img" aria-label="SJ's 3D avatar typing code on a laptop and waving hello"></canvas></div>
+</section>
+
+<div class="ring-wrap" id="projects">
+  <div class="ring-stage">
+    <div class="ring-copy">
+      <h2 class="wipe">Projects in orbit</h2>
+      <p class="rise">Scroll to spin the ring. Each card is something I built or am building right now.</p>
+      <div class="ring-count" aria-hidden="true"><span id="ringNum">01</span><small>of 10</small></div>
+    </div>
+    <div class="scene3d">
+      <div class="ring" id="ring">
+        <article class="proj" style="--c:#ff7a2f"><svg class="art" viewBox="0 0 320 140" aria-hidden="true"><path d="M0 110 L60 60 L100 85 L170 30 L240 90 L280 65 L320 95 L320 140 L0 140Z" fill="#22305a"/><path d="M20 125 C90 85 150 135 210 100 S300 85 310 115" fill="none" stroke="#ff7a2f" stroke-width="3" stroke-dasharray="8 7"/><rect x="214" y="12" width="86" height="46" rx="4" fill="#ece6d6"/><rect x="224" y="22" width="50" height="6" fill="#16203d"/><rect x="224" y="34" width="66" height="4" fill="#8a93a8"/></svg><h3>Travel platform</h3><p>A full system for a travel company: website, itinerary builder, bookings, invoices and admin portals for the team and vendors.</p><ul class="stack"><li>Next.js</li><li>Admin portals</li><li>PDF and HTML templates</li></ul></article>
+        <article class="proj" style="--c:#f3b562"><svg class="art" viewBox="0 0 320 140" aria-hidden="true"><circle cx="70" cy="70" r="30" fill="#f3b562"/><circle cx="70" cy="70" r="12" fill="#16203d"/><path d="M95 95 L130 125" stroke="#f3b562" stroke-width="10" stroke-linecap="round"/><g fill="#ece6d6"><rect x="170" y="30" width="120" height="16" rx="8"/><rect x="170" y="60" width="90" height="16" rx="8"/><rect x="170" y="90" width="110" height="16" rx="8"/></g></svg><h3>Lead generation agent</h3><p>Finds local businesses from maps, checks if they fit, and drafts a personal first message. A sales team's first hour, done in a minute.</p><ul class="stack"><li>AI agents</li><li>Maps data</li><li>Outreach drafts</li></ul></article>
+        <article class="proj" style="--c:#9ec5ff"><svg class="art" viewBox="0 0 320 140" aria-hidden="true"><path d="M30 115 L90 85 L150 95 L210 50 L290 25" fill="none" stroke="#9ec5ff" stroke-width="5" stroke-linecap="round"/><g fill="#f3b562"><circle cx="90" cy="85" r="7"/><circle cx="150" cy="95" r="7"/><circle cx="210" cy="50" r="7"/><circle cx="290" cy="25" r="9"/></g><path d="M30 125 H300" stroke="#22305a" stroke-width="3"/></svg><h3>SEO automation</h3><p>Connects to search data, finds the keywords worth chasing, audits pages and suggests fixes, so websites climb without a spreadsheet marathon.</p><ul class="stack"><li>Search Console</li><li>Keyword research</li><li>Site audits</li></ul></article>
+        <article class="proj" style="--c:#ff7a2f"><span class="tag">In progress</span><svg class="art" viewBox="0 0 320 140" aria-hidden="true"><rect x="30" y="80" width="40" height="45" fill="#22305a"/><rect x="90" y="60" width="40" height="65" fill="#22305a"/><rect x="150" y="40" width="40" height="85" fill="#f3b562"/><rect x="210" y="20" width="40" height="105" fill="#ff7a2f"/><path d="M40 70 L110 50 L170 30 L240 12" stroke="#ece6d6" stroke-width="3" fill="none"/></svg><h3>Sales agent for enterprises</h3><p>A digital teammate that researches accounts, qualifies leads and keeps follow-ups moving, so big sales teams spend their time talking, not typing.</p><ul class="stack"><li>Multi-agent</li><li>CRM workflows</li><li>Enterprise</li></ul></article>
+        <article class="proj" style="--c:#c8a6ff"><svg class="art" viewBox="0 0 320 140" aria-hidden="true"><rect x="30" y="20" width="200" height="110" rx="10" fill="#22305a"/><path d="M110 50 L160 75 L110 100Z" fill="#ff7a2f"/><g fill="#c8a6ff"><rect x="245" y="20" width="45" height="30" rx="4"/><rect x="245" y="60" width="45" height="30" rx="4"/><rect x="245" y="100" width="45" height="30" rx="4"/></g></svg><h3>Video generation agent</h3><p>Turns an idea into a script, scenes and a finished video, in brand colours and fonts. Videos written as code, so every version is consistent.</p><ul class="stack"><li>Programmatic video</li><li>Scripts to scenes</li><li>Brand kits</li></ul></article>
+        <article class="proj" style="--c:#f3b562"><svg class="art" viewBox="0 0 320 140" aria-hidden="true"><g fill="#22305a"><rect x="30" y="25" width="70" height="90" rx="10"/><rect x="125" y="25" width="70" height="90" rx="10"/><rect x="220" y="25" width="70" height="90" rx="10"/></g><g fill="#f3b562"><circle cx="65" cy="55" r="14"/><circle cx="160" cy="55" r="14"/><circle cx="255" cy="55" r="14"/></g><g fill="#ece6d6"><rect x="42" y="82" width="46" height="6" rx="3"/><rect x="137" y="82" width="46" height="6" rx="3"/><rect x="232" y="82" width="46" height="6" rx="3"/></g></svg><h3>Social media agent</h3><p>Researches what to say, writes the posts, makes the visuals and schedules them across platforms. A content calendar that fills itself.</p><ul class="stack"><li>Research</li><li>Post generation</li><li>Multi-platform</li></ul></article>
+        <article class="proj" style="--c:#9ec5ff"><svg class="art" viewBox="0 0 320 140" aria-hidden="true"><circle cx="160" cy="70" r="34" fill="#ff7a2f"/><g fill="none" stroke="#9ec5ff" stroke-width="4"><path d="M215 45 a35 35 0 0 1 0 50"/><path d="M235 30 a60 60 0 0 1 0 80"/><path d="M105 45 a35 35 0 0 0 0 50"/><path d="M85 30 a60 60 0 0 0 0 80"/></g></svg><h3>My own Jarvis</h3><p>A voice assistant that wakes on a clap or its name and plays the right music. My childhood movie dream, running on my desk.</p><ul class="stack"><li>Wake word</li><li>Voice control</li><li>Python</li></ul></article>
+        <article class="proj" style="--c:#f3b562"><svg class="art" viewBox="0 0 320 140" aria-hidden="true"><path d="M90 125 L90 65 L160 20 L230 65 L230 125Z" fill="#22305a"/><rect x="140" y="85" width="40" height="40" fill="#f3b562"/><circle cx="120" cy="70" r="8" fill="#ff7a2f"/><circle cx="200" cy="70" r="8" fill="#9ec5ff"/></svg><h3>Home automation</h3><p>Lights, devices and small routines that run themselves, controlled by voice or a schedule. The house knows when I am home.</p><ul class="stack"><li>Smart devices</li><li>Routines</li><li>Voice</li></ul></article>
+        <article class="proj" style="--c:#c8a6ff"><svg class="art" viewBox="0 0 320 140" aria-hidden="true"><rect x="120" y="30" width="80" height="70" rx="12" fill="#ece6d6"/><circle cx="145" cy="62" r="10" fill="#16203d"/><circle cx="175" cy="62" r="10" fill="#16203d"/><circle cx="145" cy="62" r="3" fill="#ff7a2f"/><circle cx="175" cy="62" r="3" fill="#ff7a2f"/><rect x="98" y="55" width="22" height="10" fill="#c8a6ff"/><rect x="200" y="55" width="22" height="10" fill="#c8a6ff"/><rect x="132" y="100" width="14" height="28" fill="#8a93a8"/><rect x="174" y="100" width="14" height="28" fill="#8a93a8"/></svg><h3>Robotics</h3><p>Experiments that take ideas off the screen and into the room: sensors, motors and small machines that react to the world.</p><ul class="stack"><li>Sensors</li><li>Motors</li><li>Prototypes</li></ul></article>
+        <article class="proj" style="--c:#ff7a2f"><svg class="art" viewBox="0 0 320 140" aria-hidden="true"><rect x="80" y="15" width="70" height="110" fill="#0b1124"/><rect x="170" y="25" width="70" height="110" fill="#0b1124"/><rect x="90" y="40" width="44" height="6" fill="#ece6d6"/><rect x="90" y="52" width="36" height="6" fill="#ece6d6"/><rect x="90" y="66" width="22" height="3" fill="#ff7a2f"/><rect x="180" y="50" width="44" height="6" fill="#ece6d6"/><rect x="180" y="62" width="38" height="6" fill="#ece6d6"/><rect x="180" y="76" width="22" height="3" fill="#ff7a2f"/></svg><h3>Two free books</h3><p>Field guides on getting AI agents to do real work and on keeping many agents in agreement. <a href="ai-agent-books/">Read them free</a>.</p><ul class="stack"><li>AI agents</li><li>Multi-agent design</li><li>Free</li></ul></article>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="sec">
+  <h2 class="wipe">How I build</h2>
+  <ol class="flow">
+    <li class="rise"><b>Listen</b><span>Sit with the people who live the problem.</span></li>
+    <li class="rise"><b>Map</b><span>Draw the workflow, find the boring loops.</span></li>
+    <li class="rise"><b>Prototype</b><span>Something real in days, not months.</span></li>
+    <li class="rise"><b>Guardrails</b><span>Humans approve what matters. Agents do the rest.</span></li>
+    <li class="rise"><b>Ship and learn</b><span>Measure, fix, repeat every week.</span></li>
+  </ol>
+</section>
+
+<section class="sec">
+  <h2 class="wipe">Toolbox</h2>
+  <div class="toolbox">
+    <div class="tool rise"><b>AI agents</b><span>Claude, tool use, MCP servers, multi-agent workflows.</span></div>
+    <div class="tool rise"><b>Web apps</b><span>Next.js, React, admin portals, dashboards.</span></div>
+    <div class="tool rise"><b>Motion and 3D</b><span>Three.js, GSAP, Blender, programmatic video.</span></div>
+    <div class="tool rise"><b>Automation</b><span>Python, scheduled jobs, voice and home devices.</span></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="cta-band rise">
+    <h2>Got a problem that will not leave you alone?</h2>
+    <a class="btn" href="./?enter#hello">Send it to SJ</a>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="foot-links"><a href="./?enter">Home</a><a href="travel.html">Travel</a><a href="ai-agent-books/">Books</a><a href="https://www.linkedin.com/in/sparsh-jain/" rel="me noopener">LinkedIn</a><a href="mailto:jsparsh11@gmail.com">jsparsh11@gmail.com</a></div>
+  <div class="foot-name" aria-hidden="true">SJ</div>
+  <p class="foot-note">© 2026 Sparsh Jain · Built in the workshop</p>
+</footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="sj-mark" viewBox="0 0 64 64"><path d="M32 6 C40 18 48 24 48 38 C48 48 41 56 32 56 C23 56 16 48 16 38 C16 30 21 26 24 20 C26 28 30 30 32 30 C30 22 28 14 32 6Z" fill="currentColor"/><path d="M10 58 L54 50 M10 50 L54 58" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
+</svg>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script type="module">
+  import { mountAvatar } from "./avatar-stage.js";
+  import { initMotion } from "./motion.js";
+  mountAvatar(document.getElementById("sjCode"), { pose: "typing", waveEvery: 9 });
+  initMotion();
+
+  // projects in orbit: cards sit on a ring that turns as you scroll
+  const ring = document.getElementById("ring"), cards = [...ring.children], n = cards.length, num = document.getElementById("ringNum");
+  const R = () => Math.min(420, Math.round(ring.offsetWidth / 2 / Math.tan(Math.PI / n)));
+  function place(angle) {
+    const r = R();
+    cards.forEach((c, i) => {
+      const a = i * (360 / n) + angle;
+      c.style.transform = "rotateY(" + a + "deg) translateZ(" + r + "px)";
+      const front = Math.cos((a * Math.PI) / 180);
+      c.classList.toggle("dim", front < 0.75);
+    });
+    const idx = ((Math.round(-angle / (360 / n)) % n) + n) % n;
+    num.textContent = String(idx + 1).padStart(2, "0");
+  }
+  const desktop = matchMedia("(min-width: 901px)");
+  if (desktop.matches && window.gsap && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const st = { a: 0 };
+    place(0);
+    gsap.to(st, { a: -360 * (n - 1) / n, ease: "none", onUpdate: () => place(st.a), scrollTrigger: { trigger: ".ring-wrap", start: "top top", end: "bottom bottom", scrub: 0.8, snap: { snapTo: 1 / (n - 1), duration: 0.4, ease: "power2.out" } } });
+    gsap.to(ring, { rotateX: -8, ease: "none", scrollTrigger: { trigger: ".ring-wrap", start: "top top", end: "bottom bottom", scrub: true } });
+  }
+</script>
+</body>
+</html>

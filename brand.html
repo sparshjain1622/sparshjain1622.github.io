@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SJ Brand Book</title>
+<meta name="description" content="The SJ brand identity: the campfire mark, night and ember colours, type, voice and motion.">
+<meta name="theme-color" content="#070a14">
+<link rel="icon" href="mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .bb { padding: 120px var(--margin); }
+  .bb h2 { font-size: clamp(2.25rem, 1.4rem + 3vw, 4rem); margin-bottom: 26px; }
+  .bb > p { color: var(--smoke); }
+  .bb-hero { min-height: 80svh; display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 40px; padding: 140px var(--margin) 80px; }
+  .bb-hero h1 { font-size: clamp(3.5rem, 1.5rem + 7vw, 9rem); line-height: .85; letter-spacing: -0.04em; }
+  .bb-hero p { font-size: var(--step-lead); line-height: 1.4; margin-top: 26px; max-width: 30ch; }
+  .bb-hero .mk { color: var(--ember); width: min(320px, 70%); justify-self: center; }
+  .lockups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .lockups div { aspect-ratio: 4 / 3; border-radius: 22px; display: grid; place-items: center; }
+  .lk { display: flex; align-items: center; gap: 14px; font: 800 56px/1 var(--display); }
+  .lk svg { width: 54px; }
+  .sw { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .sw div { min-height: 170px; border-radius: 18px; padding: 18px; display: flex; flex-direction: column; justify-content: flex-end; font-size: 14px; }
+  .sw b { font: 800 22px/1.1 var(--display); margin-bottom: 4px; }
+  .typo { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; }
+  .typo .d { font: 800 clamp(4rem, 2rem + 6vw, 8rem)/1 var(--display); letter-spacing: -0.04em; color: var(--gold); }
+  .voice { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .voice div { border-radius: 22px; padding: 28px; }
+  .voice ul { margin: 10px 0 0; padding-left: 1.1em; }
+  .motion { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .motion div { background: var(--dusk); border-radius: 22px; padding: 26px; }
+  .motion b { font: 800 22px var(--display); color: var(--gold); display: block; margin-bottom: 8px; }
+  @media (max-width: 760px) { .bb-hero, .typo, .voice { grid-template-columns: 1fr; } .lockups, .motion { grid-template-columns: 1fr; } .sw { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+<header class="bar solid">
+  <a href="./?enter" class="logo" aria-label="Back to the SJ site"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#sj-mark"/></svg><span>SJ</span></a>
+  <a class="btn ember" href="./?enter" style="min-height:42px">Back to camp</a>
+</header>
+
+<section class="bb-hero">
+  <div>
+    <h1>The SJ brand book</h1>
+    <p>A night at camp: calm dark, one warm fire, and stories worth staying up for.</p>
+  </div>
+  <svg class="mk" viewBox="0 0 64 64" role="img" aria-label="The SJ mark: a flame over crossed logs"><use href="#sj-mark"/></svg>
+</section>
+
+<section class="bb" style="background:var(--navy)">
+  <h2>The mark</h2>
+  <p>A single flame over two crossed logs. The flame is the challenge you accept; the logs are the work you put in to keep it burning. It sits beside the letters SJ as the signature.</p>
+  <div class="lockups">
+    <div style="background:var(--night);color:var(--star)"><span class="lk"><svg viewBox="0 0 64 64" aria-hidden="true" style="color:var(--ember)"><use href="#sj-mark"/></svg>SJ</span></div>
+    <div style="background:var(--ember);color:var(--night)"><span class="lk"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#sj-mark"/></svg>SJ</span></div>
+    <div style="background:var(--star);color:var(--night)"><span class="lk"><svg viewBox="0 0 64 64" aria-hidden="true" style="color:#d9601c"><use href="#sj-mark"/></svg>SJ</span></div>
+  </div>
+</section>
+
+<section class="bb">
+  <h2>Night and ember</h2>
+  <p>Mostly night. Fire is precious, so ember appears once per screen: the action, the hot word, the next challenge.</p>
+  <div class="sw">
+    <div style="background:#070a14;color:#ece6d6"><b>Night</b>#070a14 · page ground</div>
+    <div style="background:#0d1530;color:#ece6d6"><b>Navy</b>#0d1530 · sections</div>
+    <div style="background:#16203d;color:#ece6d6"><b>Dusk</b>#16203d · panels</div>
+    <div style="background:#a3abbf;color:#070a14"><b>Smoke</b>#a3abbf · quiet text</div>
+    <div style="background:#ff7a2f;color:#070a14"><b>Ember</b>#ff7a2f · the one accent</div>
+    <div style="background:#f3b562;color:#070a14"><b>Gold</b>#f3b562 · highlights</div>
+    <div style="background:#ece6d6;color:#070a14"><b>Starlight</b>#ece6d6 · text</div>
+    <div style="background:#9ec5ff;color:#070a14"><b>Moonlight</b>#9ec5ff · rare cool note</div>
+  </div>
+</section>
+
+<section class="bb" style="background:var(--navy)">
+  <h2>Type</h2>
+  <div class="typo">
+    <div class="d">Fraunces</div>
+    <div><p>Fraunces, heavy and soft, for names, headings and stories told aloud. Manrope, clean and friendly, for everything you read quickly. Two faces, never more.</p></div>
+  </div>
+</section>
+
+<section class="bb">
+  <h2>How SJ sounds</h2>
+  <div class="voice">
+    <div style="background:var(--dusk)"><b style="color:var(--gold)">Sounds like SJ</b><ul><li>Pull up a log. The fire is about to start.</li><li>Got a challenge? Send it over.</li><li>Accept one and you are handed a bigger one.</li></ul></div>
+    <div style="background:var(--navy)"><b>Not SJ</b><ul><li>Leveraging cutting-edge synergies.</li><li>Passionate full-stack ninja.</li><li>Unlock your potential today!</li></ul></div>
+  </div>
+</section>
+
+<section class="bb" style="background:var(--navy)">
+  <h2>Motion</h2>
+  <div class="motion">
+    <div><b>Ignite</b>Things start as embers and catch: the fire grows after you sit down, words light up as you read them.</div>
+    <div><b>Drift</b>Nothing snaps. The camera breathes, sparks rise, cards lean toward your hand.</div>
+    <div><b>Rise</b>Headings rise into place with a strong ease-out, staggered a beat apart, then stay still.</div>
+  </div>
+</section>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="sj-mark" viewBox="0 0 64 64">
+    <path d="M32 6 C40 18 48 24 48 38 C48 48 41 56 32 56 C23 56 16 48 16 38 C16 30 21 26 24 20 C26 28 30 30 32 30 C30 22 28 14 32 6Z" fill="currentColor"/>
+    <path d="M10 58 L54 50 M10 50 L54 58" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+  </symbol>
+</svg>
+</body>
+</html>

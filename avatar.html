@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SJ Avatar</title>
+<meta name="description" content="Meet SJ in 3D: spin the avatar, switch night and day, and download it as a profile picture.">
+<meta name="theme-color" content="#070a14">
+<link rel="icon" href="mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .av { min-height: 100svh; display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; gap: 30px; padding: 100px var(--margin) 60px; }
+  .av h1 { font-size: clamp(3rem, 1.5rem + 5vw, 6.5rem); line-height: .9; letter-spacing: -0.04em; }
+  .av p { font-size: var(--step-lead); line-height: 1.4; color: var(--smoke); margin: 22px 0 28px; max-width: 30ch; }
+  .av-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .stage { position: relative; aspect-ratio: 1; width: 100%; max-width: 640px; justify-self: center; border-radius: 50%; overflow: hidden; background: #16203d; cursor: grab; touch-action: none; }
+  .stage:active { cursor: grabbing; }
+  #av { width: 100%; height: 100%; display: block; }
+  .hint { text-align: center; color: var(--smoke); font-size: 14px; margin-top: 12px; }
+  body.day .stage { background: #9cc8ec; }
+  @media (max-width: 760px) { .av { grid-template-columns: 1fr; padding-top: 90px; } .stage { order: -1; max-width: 360px; } }
+</style>
+</head>
+<body>
+<header class="bar solid">
+  <a href="./?enter" class="logo" aria-label="Back to the SJ site"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#sj-mark"/></svg><span>SJ</span></a>
+  <a class="btn ember" href="./?enter" style="min-height:42px">Back to camp</a>
+</header>
+<main class="av">
+  <div>
+    <h1>Meet SJ</h1>
+    <p>Calm, curious, proactive, and always in a hoodie. Beanie by night, shades by day. Drag to spin him around.</p>
+    <div class="av-actions">
+      <button class="btn ember" id="dl" type="button">Download profile picture</button>
+      <button class="btn ghost" id="mode" type="button">Switch to day</button>
+    </div>
+  </div>
+  <div>
+    <div class="stage"><canvas id="av" aria-label="A 3D cartoon avatar of SJ in an orange hoodie" role="img"></canvas></div>
+    <p class="hint">Drag to turn · he waves when you click</p>
+  </div>
+</main>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="sj-mark" viewBox="0 0 64 64"><path d="M32 6 C40 18 48 24 48 38 C48 48 41 56 32 56 C23 56 16 48 16 38 C16 30 21 26 24 20 C26 28 30 30 32 30 C30 22 28 14 32 6Z" fill="currentColor"/><path d="M10 58 L54 50 M10 50 L54 58" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
+</svg>
+<script type="module">
+  import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js";
+  import { createAvatar } from "./avatar.js";
+  const canvas = document.getElementById("av");
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2)); renderer.outputColorSpace = THREE.SRGBColorSpace; renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(30, 1, 0.1, 50);
+  camera.position.set(0, 1.25, 3.4); camera.lookAt(0, 1.0, 0);
+  const key = new THREE.DirectionalLight(0xffe2c4, 2.2); key.position.set(2, 3, 3); scene.add(key);
+  const rim = new THREE.DirectionalLight(0x9ec5ff, 1.4); rim.position.set(-3, 2, -2); scene.add(rim);
+  const hemi = new THREE.HemisphereLight(0xbcd0ff, 0x3a2a20, 0.9); scene.add(hemi);
+  const log = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.24, 1.4, 16), new THREE.MeshStandardMaterial({ color: 0x5a3c22, roughness: 0.9 }));
+  log.rotation.z = Math.PI / 2; log.position.y = 0.2; scene.add(log);
+  const sj = createAvatar(); scene.add(sj.root);
+  let day = false, spin = 0.35, target = 0.35, drag = null, wave = 0, waveUntil = 1.5;
+  const stage = document.querySelector(".stage");
+  stage.addEventListener("pointerdown", (e) => { drag = { x: e.clientX, s: target }; stage.setPointerCapture(e.pointerId); });
+  stage.addEventListener("pointermove", (e) => {
+    const r = stage.getBoundingClientRect(); sj.setLook((e.clientX - r.left) / r.width - 0.5, (e.clientY - r.top) / r.height - 0.5);
+    if (drag) target = drag.s + (e.clientX - drag.x) / 120;
+  });
+  stage.addEventListener("pointerup", (e) => { if (drag && Math.abs(e.clientX - drag.x) < 4) waveUntil = t + 2.4; drag = null; });
+  document.getElementById("mode").addEventListener("click", (e) => { day = !day; document.body.classList.toggle("day", day); e.target.textContent = day ? "Switch to night" : "Switch to day"; sj.setDay(day ? 1 : 0); });
+  document.getElementById("dl").addEventListener("click", () => {
+    renderer.render(scene, camera);
+    const a = document.createElement("a"); a.download = day ? "SJ-avatar-day.png" : "SJ-avatar-night.png"; a.href = canvas.toDataURL("image/png"); a.click();
+  });
+  function size() { const w = canvas.clientWidth; renderer.setSize(w, w, false); camera.aspect = 1; camera.updateProjectionMatrix(); }
+  addEventListener("resize", size); size();
+  let t = 0, last = performance.now();
+  (function frame(now) {
+    const dt = Math.min(0.05, (now - last) / 1000); last = now; t += dt;
+    spin += (target - spin) * Math.min(1, dt * 6); sj.root.rotation.y = spin;
+    wave += ((t < waveUntil ? 1 : 0) - wave) * Math.min(1, dt * 6); sj.setWave(wave);
+    sj.update(dt, t); renderer.render(scene, camera); requestAnimationFrame(frame);
+  })(last);
+</script>
+</body>
+</html>
